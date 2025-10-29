@@ -4,16 +4,35 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import History from "./pages/History";
+import Events from "./pages/Events";
+import Alumni from "./pages/Alumni";
+import Media from "./pages/Media";
+import Merch from "./pages/Merch";
+import Contact from "./pages/Contact";
+import Homecoming from "./pages/Homecoming";
+import Sports from "./pages/Sports";
 
 function Router() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <Layout>
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/history"} component={History} />
+        <Route path={"/events"} component={Events} />
+        <Route path={"/events/homecoming"} component={Homecoming} />
+        <Route path={"/events/sports"} component={Sports} />
+        <Route path={"/alumni"} component={Alumni} />
+        <Route path={"/media"} component={Media} />
+        <Route path={"/merch"} component={Merch} />
+        <Route path={"/contact"} component={Contact} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </Layout>
   );
 }
 
