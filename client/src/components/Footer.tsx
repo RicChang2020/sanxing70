@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="三興國小70週年" className="w-16 h-16" />
+              <img src="/logo.png" alt="三興國小70週年" className="w-16 h-16 object-contain" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-foreground">三興國小</span>
                 <span className="text-sm text-muted-foreground">70週年校慶</span>

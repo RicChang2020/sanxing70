@@ -25,7 +25,7 @@ export default function Navbar() {
           {/* Logo and Title */}
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer">
-              <img src="/logo.svg" alt="三興國小70週年" className="w-12 h-12" />
+              <img src="/logo.png" alt="三興國小70週年" className="w-12 h-12 object-contain" />
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-foreground">{APP_TITLE}</span>
                 <span className="text-xs text-muted-foreground">Sanxing Elementary School</span>
