@@ -64,13 +64,6 @@ export default function Home() {
       link: "/media",
       color: "bg-secondary",
     },
-    {
-      icon: Award,
-      title: "紀念品商店",
-      description: "限量紀念品預購",
-      link: "/merch",
-      color: "bg-accent",
-    },
   ];
 
   return (
@@ -163,7 +156,7 @@ export default function Home() {
       <section className="py-16">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">快速導覽</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {highlights.map((item, index) => (
               <Link key={index} href={item.link}>
                 <Card className="hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer h-full">

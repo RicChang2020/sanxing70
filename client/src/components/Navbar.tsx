@@ -14,7 +14,6 @@ export default function Navbar() {
     { path: "/events", label: "校慶活動" },
     { path: "/alumni", label: "校友專區" },
     { path: "/media", label: "影音專區" },
-    { path: "/merch", label: "紀念品/文創商品" },
     { path: "/contact", label: "聯絡我們" },
   ];
 

@@ -10,7 +10,6 @@ import History from "./pages/History";
 import Events from "./pages/Events";
 import Alumni from "./pages/Alumni";
 import Media from "./pages/Media";
-import Merch from "./pages/Merch";
 import Contact from "./pages/Contact";
 import Homecoming from "./pages/Homecoming";
 import Sports from "./pages/Sports";
@@ -26,7 +25,6 @@ function Router() {
         <Route path={"/events/sports"} component={Sports} />
         <Route path={"/alumni"} component={Alumni} />
         <Route path={"/media"} component={Media} />
-        <Route path={"/merch"} component={Merch} />
         <Route path={"/contact"} component={Contact} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
