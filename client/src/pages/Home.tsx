@@ -77,10 +77,10 @@ export default function Home() {
               70週年校慶
             </Badge>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-              三興國小<span className="text-primary">70</span>載風華
+              三興<span className="text-primary">七十載</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-                同心同慶迎新篇
+                舞動新風采
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
