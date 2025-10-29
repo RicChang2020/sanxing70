@@ -18,16 +18,16 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-background/95">
+    <nav className="bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 border-b-4 border-primary sticky top-0 z-50 backdrop-blur-sm shadow-lg">
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo and Title */}
           <Link href="/">
             <div className="flex items-center gap-3 cursor-pointer">
-              <img src="/logo.png" alt="三興國小70週年" className="w-12 h-12 object-contain" />
+              <img src="/logo.png" alt="三興國小70週年" className="w-14 h-14 object-contain transform hover:scale-110 hover:rotate-6 transition-transform duration-300" />
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-foreground">{APP_TITLE}</span>
-                <span className="text-xs text-muted-foreground">Sanxing Elementary School</span>
+                <span className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">{APP_TITLE}</span>
+                <span className="text-xs font-semibold text-secondary">Sanxing Elementary School</span>
               </div>
             </div>
           </Link>
@@ -38,7 +38,7 @@ export default function Navbar() {
               <Link key={item.path} href={item.path}>
                 <Button
                   variant={location === item.path ? "default" : "ghost"}
-                  className="font-medium"
+                  className="font-bold rounded-full hover:scale-105 transition-transform"
                 >
                   {item.label}
                 </Button>
