@@ -69,12 +69,21 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-accent/30 via-secondary/20 to-primary/20 py-20 md:py-32 overflow-hidden">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* 背景圖片 */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/school-gate.jpg" 
+            alt="三興國小校門" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-200/80 via-yellow-100/80 to-sky-200/80"></div>
+        </div>
         {/* 裝飾元素 */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-accent/30 rounded-full blur-xl animate-bounce"></div>
-        <div className="container">
+        <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full blur-2xl animate-pulse z-10"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000 z-10"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-accent/30 rounded-full blur-xl animate-bounce z-10"></div>
+        <div className="container relative z-20">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <Badge variant="secondary" className="text-lg px-8 py-3 rounded-full shadow-lg animate-bounce">
               <Sparkles className="w-4 h-4 mr-2" />
