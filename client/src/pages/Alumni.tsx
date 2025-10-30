@@ -14,11 +14,11 @@ export default function Alumni() {
     { name: "趙六", year: "2005", achievement: "科技創業家", field: "科技" },
   ];
 
-  // 生成第12屆到第89屆的資料
-  // 第70屆 = 2027年，第69屆 = 2026年，第68屆 = 2025年
+  // 生成第12屆到第69屆的資料
+  // 第69屆 = 2026年，第68屆 = 2025年，第67屆 = 2024年
   const generateGraduationYears = () => {
     const grades = [];
-    for (let grade = 12; grade <= 89; grade++) {
+    for (let grade = 12; grade <= 69; grade++) {
       // 根據第70屆=2027年計算，graduationYear = 2027 - (70 - grade) = 1957 + grade
       const graduationYear = 1957 + grade;
       const classCount = Math.floor(Math.random() * 6) + 5; // 5-10個班
