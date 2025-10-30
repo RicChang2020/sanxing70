@@ -8,10 +8,16 @@ export default function Alumni() {
   const [expandedGrade, setExpandedGrade] = useState<number | null>(null);
 
   const alumni = [
-    { name: "張三", year: "1975", achievement: "知名企業家", field: "商業" },
-    { name: "李四", year: "1985", achievement: "醫學教授", field: "醫學" },
-    { name: "王五", year: "1995", achievement: "藝術家", field: "藝術" },
-    { name: "趙六", year: "2005", achievement: "科技創業家", field: "科技" },
+    { name: "賈海榮", grade: "65屆", achievement: "第9屆立委、臺北市議員、立法委員", field: "政治" },
+    { name: "周錦繼", grade: "6屆之2班", achievement: "第13屆立委、前臺北體育局長、財團法人中華民國羽球協會理事長", field: "政治、體育" },
+    { name: "包偉銘", grade: "6屆之10班", achievement: "愛之味財經節目主持人、歌手、主持人、音樂創作者", field: "娛樂" },
+    { name: "伍姮華", grade: "6屆之10班", achievement: "立法委員、內政部民政司副司長、體育署次長、教育部政務次長", field: "政治、教育" },
+    { name: "蘭宗熟", grade: "6屆之1班", achievement: "藝人、臺北市政府觀光傳播局局長", field: "藝術、政治" },
+    { name: "包小松", grade: "6屆之4班", achievement: "歌手、組團制作人、音樂創作者", field: "娛樂" },
+    { name: "包小柏", grade: "6屆之4班", achievement: "歌手、藝人、網路紅人、音樂創作者", field: "娛樂" },
+    { name: "關康詩", grade: "6屆之3班", achievement: "臺灣自行車選手、馬拉松跑者管理長", field: "體育" },
+    { name: "黃乃輝", grade: "6屆之13班", achievement: "立法委員、臺北市政府教育局副局長、行政院客家委員會委員", field: "政治、教育" },
+    { name: "胡皓賢", grade: "6屆之1班", achievement: "第6屆立委、世大運球團副代表", field: "政治、體育" },
   ];
 
   // 生成第12屆到第69屆的資料
@@ -72,7 +78,7 @@ export default function Alumni() {
                   <CardTitle className="text-center text-xl">{person.name}</CardTitle>
                   <CardDescription className="text-center space-y-1">
                     <p className="font-semibold text-secondary">{person.achievement}</p>
-                    <p>畢業年份：{person.year}</p>
+                    <p>畢業屆數：第{person.grade}</p>
                     <Badge variant="outline">{person.field}</Badge>
                   </CardDescription>
                 </CardHeader>
