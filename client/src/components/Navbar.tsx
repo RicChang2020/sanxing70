@@ -27,7 +27,7 @@ export default function Navbar() {
               <img src="/logo.png" alt="三興國小70週年" className="w-14 h-14 object-contain transform hover:scale-110 hover:rotate-6 transition-transform duration-300" />
               <div className="flex flex-col">
                 <span className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">{APP_TITLE}</span>
-                <span className="text-xs font-semibold text-secondary">Sanxing Elementary School</span>
+                <span className="text-xs font-semibold text-secondary">Sanxing Elementary School 70th Anniversary</span>
               </div>
             </div>
           </Link>
