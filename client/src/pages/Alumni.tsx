@@ -15,11 +15,12 @@ export default function Alumni() {
   ];
 
   // 生成第12屆到第89屆的資料
+  // 第70屆 = 2027年，第69屆 = 2026年，第68屆 = 2025年
   const generateGraduationYears = () => {
-    const startYear = 1955; // 學校創立年份
     const grades = [];
     for (let grade = 12; grade <= 89; grade++) {
-      const graduationYear = startYear + grade - 1;
+      // 根據第70屆=2027年計算，graduationYear = 2027 - (70 - grade) = 1957 + grade
+      const graduationYear = 1957 + grade;
       const classCount = Math.floor(Math.random() * 6) + 5; // 5-10個班
       const classes = [];
       for (let classNum = 1; classNum <= classCount; classNum++) {
