@@ -1,184 +1,262 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Users, Building, School, Award } from "lucide-react";
+import { Calendar, MapPin, Users, Building, School, Award, Sparkles } from "lucide-react";
 
 export default function History() {
   const timeline = [
     { 
+      year: "民國40年", 
+      date: "1951年12月",
+      title: "學校創立", 
+      description: "本校於民國40年12月奉准成立為興雅國校三張犁分班。", 
+      icon: School, 
+      color: "bg-pink-400" 
+    },
+    { 
+      year: "民國43年", 
+      date: "1954年5月",
+      title: "改稱分校", 
+      description: "興雅國校三張犁分班改稱分校。", 
+      icon: Building, 
+      color: "bg-sky-400" 
+    },
+    { 
       year: "民國44年", 
       date: "1955年8月",
-      title: "學校創立", 
-      description: "本校於民國44年12月奉准成立為興雅國校三興分校，43年5月改稱分校。民國45年2月派陳展琪校長接任第三任校長，繼續增建教室，課求校務發展。民國49年8月始略具雛形。", 
-      icon: School, 
-      color: "bg-primary" 
+      title: "獨立設校", 
+      description: "奉令獨立，派席慧珍校長為首任校長，並策劃歸併校地，興建校舍，始具雛形。本校因座落三張犁，並為紀念原校興雅而命名三興國民學校。", 
+      icon: Sparkles, 
+      color: "bg-yellow-400" 
     },
     { 
       year: "民國49年", 
       date: "1960年2月",
-      title: "獨立設校", 
-      description: "民國49年2月市府派林讚後校長為第二任校長，並為紀念原校長興雅而命名三興國民學校。", 
-      icon: Building, 
-      color: "bg-secondary" 
+      title: "第二任校長", 
+      description: "市府派林讚後校長為第二任校長。", 
+      icon: Users, 
+      color: "bg-green-400" 
     },
     { 
       year: "民國50年", 
-      date: "1961年1月",
-      title: "派駐邱美利校長", 
-      description: "民國50年1月派駐邱美利校長接任第三任校長。", 
+      date: "1961年2月",
+      title: "第三任校長", 
+      description: "派耿玉潔校長接任第三任校長。", 
       icon: Users, 
-      color: "bg-accent" 
+      color: "bg-pink-400" 
     },
     { 
       year: "民國54年", 
       date: "1965年9月",
-      title: "成立光復國小", 
-      description: "民國54年9月派陳展琪校長接任第四任校長，繼續增建教室，課求校務發展，並於57年2月撥出44、45年級學生，成立光復國小。", 
+      title: "校舍改建與成立光復國小", 
+      description: "派陳展淇校長接任第四任校長，拆舊換新改建校舍，並於57年3月撥出四、五年級學生，成立光復國小。", 
       icon: Building, 
-      color: "bg-primary" 
+      color: "bg-sky-400" 
     },
     { 
       year: "民國57年", 
       date: "1968年",
-      title: "實施國民教育", 
-      description: "民國57年實施國民教育，本校更名為台北市信義區三興國民小學。", 
+      title: "更名為松山區三興國小", 
+      description: "本校更名為臺北市松山區三興國民小學。", 
       icon: School, 
-      color: "bg-secondary" 
+      color: "bg-yellow-400" 
+    },
+    { 
+      year: "民國58年", 
+      date: "1969年",
+      title: "第五任校長", 
+      description: "派彭瑞卓接任第五任校長，成立教職員工托兒所，重新劃分學區，撥交吳興國小22班。", 
+      icon: Users, 
+      color: "bg-green-400" 
     },
     { 
       year: "民國61年", 
-      date: "1972年",
-      title: "小一新生班", 
-      description: "民國61年8月派鄭美利校長接任第五任校長，改建校門，增建校舍，設立專科教室，重新劃分學區，撤交與興雅國校。", 
-      icon: Users, 
-      color: "bg-accent" 
-    },
-    { 
-      year: "民國65年", 
-      date: "1976年",
-      title: "整校風貌", 
-      description: "民國65年8月協助國立編譯館編理「生活與倫理」課本教材工作，整校風貌，步入新境。", 
-      icon: Award, 
-      color: "bg-primary" 
+      date: "1972年8月",
+      title: "第六任校長", 
+      description: "派鄭美俐校長接任第六任校長，改建校門、增設校舍、設立專科教室，重整校風。", 
+      icon: Building, 
+      color: "bg-pink-400" 
     },
     { 
       year: "民國68年", 
-      date: "1979年",
-      title: "為四樓校舍", 
-      description: "民國68年8月市府派郭國義校長為第七任校長，為校舍建築長程計畫，拆除舊校舍改建。", 
-      icon: Building, 
-      color: "bg-secondary" 
+      date: "1979年8月",
+      title: "第七任校長", 
+      description: "市府派郭國義校長為第七任校長，拆舊校舍改建為四樓校舍。", 
+      icon: Users, 
+      color: "bg-sky-400" 
     },
     { 
       year: "民國69年", 
       date: "1980年2月",
-      title: "派張思穎校長", 
-      description: "民國69年2月府派張思穎校長為第八任校長，準創立附設幼稚園，推理資優教育實驗。", 
-      icon: Users, 
-      color: "bg-accent" 
+      title: "資優教育實驗", 
+      description: "奉教育局指定辦理資賦優異兒童教育實驗教學（分散式）。", 
+      icon: Award, 
+      color: "bg-yellow-400" 
     },
     { 
-      year: "民國70年", 
-      date: "1981年",
-      title: "設立幼稚園", 
-      description: "民國70年8月奉准創立附設幼稚園。", 
+      year: "民國76年", 
+      date: "1987年8月",
+      title: "創立附設幼稚園", 
+      description: "奉准創立附設幼稚園。", 
       icon: School, 
-      color: "bg-primary" 
+      color: "bg-green-400" 
     },
     { 
-      year: "民國78年", 
-      date: "1989年",
-      title: "派黃寶嬌校長", 
-      description: "民國78年8月府派黃寶嬌校長為第九任校長，推理資優教育實驗，校舍大四樓三平方公尺。", 
+      year: "民國77年", 
+      date: "1988年2月",
+      title: "第八任校長", 
+      description: "市府派張瑞福校長為第八任校長。", 
       icon: Users, 
-      color: "bg-secondary" 
+      color: "bg-pink-400" 
     },
     { 
-      year: "民國86年", 
-      date: "1997年",
-      title: "校地面積擴增", 
-      description: "民國86年3月府派黃寶嬌校長為第九任校長，校舍大四樓三平方公尺，運動場七千二百平方公尺，道路綠地六四五平方公尺。", 
-      icon: MapPin, 
-      color: "bg-accent" 
+      year: "民國79年", 
+      date: "1990年3月12日",
+      title: "更名為信義區三興國小", 
+      description: "本校更名為臺北市信義區三興國民小學。", 
+      icon: Sparkles, 
+      color: "bg-sky-400" 
     },
     { 
-      year: "民國94年", 
-      date: "2005年",
-      title: "50週年金禧校慶", 
-      description: "舉辦大型校友回娘家活動，校友齊聚一堂。", 
-      icon: Award, 
-      color: "bg-primary" 
+      year: "民國80年", 
+      date: "1991年2月",
+      title: "第九任校長", 
+      description: "市府派黃濟德校長為第九任校長。", 
+      icon: Users, 
+      color: "bg-yellow-400" 
     },
     { 
-      year: "民國104年", 
-      date: "2015年",
-      title: "60週年鑽石校慶", 
-      description: "啟動校園智慧化計畫，邁向教育新紀元。", 
-      icon: Award, 
-      color: "bg-secondary" 
+      year: "民國85年", 
+      date: "1996年8月",
+      title: "第十任校長", 
+      description: "市府派江國雄校長為第十任校長。", 
+      icon: Users, 
+      color: "bg-green-400" 
+    },
+    { 
+      year: "民國90年", 
+      date: "2001年8月",
+      title: "第十一任校長", 
+      description: "經校長遴選，劉永泉校長為第十一任校長，94年8月經校長遴選連任。", 
+      icon: Users, 
+      color: "bg-pink-400" 
+    },
+    { 
+      year: "民國95年", 
+      date: "2006年8月",
+      title: "第十二任校長", 
+      description: "經校長遴選，江新妹校長為第十二任校長。", 
+      icon: Users, 
+      color: "bg-sky-400" 
+    },
+    { 
+      year: "民國99年", 
+      date: "2010年8月",
+      title: "第十三任校長", 
+      description: "經校長遴選，倪雨平校長為第十三任校長，103年8月經校長遴選連任。", 
+      icon: Users, 
+      color: "bg-yellow-400" 
+    },
+    { 
+      year: "民國105年", 
+      date: "2016年8月",
+      title: "第十五任校長", 
+      description: "經校長遴選，梁靜珊校長為第十五任校長。", 
+      icon: Users, 
+      color: "bg-green-400" 
+    },
+    { 
+      year: "民國107年", 
+      date: "2018年8月",
+      title: "第十六任代理校長", 
+      description: "市府派林淑菁校長為第十六任代理校長。", 
+      icon: Users, 
+      color: "bg-pink-400" 
+    },
+    { 
+      year: "民國108年", 
+      date: "2019年8月",
+      title: "第十七任校長", 
+      description: "經校長遴選，李莉莉校長為第十七任校長，112年8月經校長遴選連任。", 
+      icon: Users, 
+      color: "bg-sky-400" 
     },
     { 
       year: "民國114年", 
-      date: "2025年",
-      title: "70週年白金校慶", 
-      description: "七十載風華，舞動新風采，邁向教育新里程。", 
-      icon: Calendar, 
-      color: "bg-accent" 
+      date: "2025年11月29日",
+      title: "70週年校慶", 
+      description: "三興國小迎來70週年校慶，回顧七十年的輝煌歷史，展望未來，共同慶祝這個重要的里程碑！", 
+      icon: Award, 
+      color: "bg-gradient-to-r from-pink-400 via-yellow-400 to-sky-400" 
     },
   ];
 
   return (
-    <div className="min-h-screen">
-      <section className="bg-gradient-to-br from-accent/30 via-secondary/20 to-primary/20 py-16 md:py-24">
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <Badge variant="secondary" className="text-lg px-8 py-3 rounded-full shadow-lg">
-              <Calendar className="w-4 h-4 mr-2" />學校歷史
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
-              七十年的<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">光輝歲月</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              從民國44年到民國114年，三興國小走過了七十年的輝煌歷程，見證無數學子的成長。
-            </p>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-50 to-sky-100">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-r from-pink-400 via-yellow-400 to-sky-400 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <Badge className="mb-4 bg-white text-pink-600 hover:bg-white text-lg px-6 py-2 rounded-full border-4 border-white shadow-lg">
+            🏫 學校歷史
+          </Badge>
+          <h1 className="text-5xl md:text-7xl font-black mb-6 drop-shadow-lg">
+            三興國小<span className="text-yellow-200">70年</span>歷史
+          </h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-bold drop-shadow">
+            從民國40年創校至今，三興國小走過了七十個年頭，見證了無數學子的成長與蛻變。
+          </p>
         </div>
-      </section>
-      
-      <section className="py-16 bg-white">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
-            📚 學校沿革
-          </h2>
-          <div className="max-w-5xl mx-auto grid gap-6">
-            {timeline.map((item, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-2xl transition-all hover:-translate-y-1 border-4 border-transparent hover:border-primary rounded-3xl"
-              >
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className={`w-16 h-16 rounded-full ${item.color} flex items-center justify-center flex-shrink-0 shadow-xl transform hover:rotate-12 transition-transform`}>
-                      <item.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <Badge variant="outline" className="text-base font-bold px-4 py-1 rounded-full border-2">
-                          {item.year}
-                        </Badge>
-                        <span className="text-sm text-muted-foreground">{item.date}</span>
+      </div>
+
+      {/* Timeline Section */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            {/* 時間軸線 */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-2 bg-gradient-to-b from-pink-300 via-yellow-300 to-sky-300 rounded-full transform md:-translate-x-1/2"></div>
+            
+            {/* 時間軸項目 */}
+            <div className="space-y-12">
+              {timeline.map((item, index) => {
+                const Icon = item.icon;
+                const isLeft = index % 2 === 0;
+                
+                return (
+                  <div key={index} className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
+                    {/* 圖標 */}
+                    <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-0 z-10">
+                      <div className={`${item.color} w-16 h-16 rounded-full flex items-center justify-center shadow-2xl border-4 border-white transform hover:scale-125 hover:rotate-12 transition-all duration-300`}>
+                        <Icon className="w-8 h-8 text-white" />
                       </div>
-                      <CardTitle className="text-2xl font-black">{item.title}</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">
-                        {item.description}
-                      </CardDescription>
+                    </div>
+                    
+                    {/* 內容卡片 */}
+                    <div className={`ml-28 md:ml-0 md:w-5/12 ${isLeft ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'}`}>
+                      <Card className="p-6 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 bg-white border-4 border-gray-200 rounded-3xl">
+                        <div className="flex items-center gap-3 mb-3">
+                          <Badge className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white text-base px-4 py-1 rounded-full border-2 border-white shadow-lg">
+                            <Calendar className="w-4 h-4 inline mr-2" />
+                            {item.year}
+                          </Badge>
+                          <span className="text-sm text-gray-500 font-bold">{item.date}</span>
+                        </div>
+                        <h3 className="text-2xl font-black mb-3 text-gray-800">{item.title}</h3>
+                        <p className="text-gray-600 leading-relaxed font-medium">{item.description}</p>
+                      </Card>
                     </div>
                   </div>
-                </CardHeader>
-              </Card>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* 底部裝飾 */}
+      <div className="bg-gradient-to-r from-pink-200 via-yellow-200 to-sky-200 py-12 text-center">
+        <p className="text-2xl font-black text-gray-700">
+          🎉 七十年的輝煌歷史，共同見證三興的成長！ 🎉
+        </p>
+      </div>
     </div>
   );
 }
