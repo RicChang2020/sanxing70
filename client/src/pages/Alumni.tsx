@@ -27,20 +27,37 @@ export default function Alumni() {
     for (let grade = 12; grade <= 69; grade++) {
       // 根據第70屆=2027年計算，graduationYear = 2027 - (70 - grade) = 1957 + grade
       const graduationYear = 1957 + grade;
-      const classCount = Math.floor(Math.random() * 6) + 5; // 5-10個班
-      const classes = [];
-      for (let classNum = 1; classNum <= classCount; classNum++) {
-        classes.push({
-          className: `${classNum}班`,
-          // 預留照片上傳位置，目前使用佔位圖
-          photoUrl: null,
+      
+      // 第17屆有實際照片，14個班
+      if (grade === 17) {
+        const classes = [];
+        for (let classNum = 1; classNum <= 14; classNum++) {
+          classes.push({
+            className: `${classNum}班`,
+            photoUrl: `/alumni/grade17/class-${classNum}.jpg`,
+          });
+        }
+        grades.push({
+          grade,
+          year: graduationYear,
+          classes,
+        });
+      } else {
+        const classCount = Math.floor(Math.random() * 6) + 5; // 5-10個班
+        const classes = [];
+        for (let classNum = 1; classNum <= classCount; classNum++) {
+          classes.push({
+            className: `${classNum}班`,
+            // 預留照片上傳位置，目前使用佔位圖
+            photoUrl: null,
+          });
+        }
+        grades.push({
+          grade,
+          year: graduationYear,
+          classes,
         });
       }
-      grades.push({
-        grade,
-        year: graduationYear,
-        classes,
-      });
     }
     return grades.reverse(); // 最新的在前面
   };
