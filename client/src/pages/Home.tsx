@@ -14,8 +14,8 @@ export default function Home() {
     seconds: 0,
   });
 
-  // 校慶日期設定為2025年12月31日
-  const celebrationDate = new Date("2025-12-31T00:00:00");
+  // 校慶日期設定為114年11月29日（2025年11月29日）
+  const celebrationDate = new Date("2025-11-29T00:00:00");
 
   useEffect(() => {
     const timer = setInterval(() => {
