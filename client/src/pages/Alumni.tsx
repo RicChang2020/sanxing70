@@ -11,13 +11,13 @@ export default function Alumni() {
     { name: "費鴻泰", grade: "12屆", achievement: "立法委員、臺北市議員", field: "政治", photo: "/alumni-fei-hongtai.jpg" },
     { name: "周錫瑋", grade: "13屆", achievement: "前新北市長、前臺北縣長", field: "政治", photo: "/alumni-zhou-xiwei.jpg" },
     { name: "包偉銘", grade: "6屆之10班", achievement: "財經節目主持人、歌手、音樂創作者", field: "娛樂", photo: "/alumni-bao-weiming.jpg" },
-    { name: "伍婉華", grade: "6屆之10班", achievement: "立法委員、體育署次長、教育部政務次長", field: "政治、教育", photo: null },
+    { name: "伍婉華", grade: "6屆之10班", achievement: "氣象學家、交通部中央氣象署氣象預報中心簡任技正", field: "氣象科學", photo: null },
     { name: "簡余晏", grade: "15屆", achievement: "台北市議員、觀傳局長、作家", field: "政治、文化", photo: "/alumni-jian-yuyan.jpg" },
     { name: "包小松", grade: "6屆之4班", achievement: "歌手、組團制作人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaosong.jpg" },
     { name: "包小柏", grade: "6屆之4班", achievement: "歌手、藝人、音樂制作人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaobai.jpg" },
     { name: "饒慶鈴", grade: "18屆", achievement: "台東縣長", field: "政治", photo: null },
     { name: "黃乃輝", grade: "6屆之13班", achievement: "立法委員、臺北市政府教育局副局長", field: "政治、教育", photo: null },
-    { name: "胡瓏貿", grade: "20屆", achievement: "企業家、社會公益人士", field: "商業", photo: null },
+    { name: "胡瓏貿", grade: "20屆", achievement: "松山高中籃球隊，帶領球隊達成HBL三連霸", field: "體育", photo: null },
   ];
 
   // 生成第12屆到第69屆的資料
