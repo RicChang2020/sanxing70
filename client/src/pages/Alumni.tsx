@@ -8,16 +8,16 @@ export default function Alumni() {
   const [expandedGrade, setExpandedGrade] = useState<number | null>(null);
 
   const alumni = [
-    { name: "賈海榮", grade: "65屆", achievement: "第9屆立委、臺北市議員、立法委員", field: "政治", photo: null },
-    { name: "周錦繼", grade: "6屆之2班", achievement: "第13屆立委、前臺北體育局長、財團法人中華民國羽球協會理事長", field: "政治、體育", photo: null },
-    { name: "包偉銘", grade: "6屆之10班", achievement: "愛之味財經節目主持人、歌手、主持人、音樂創作者", field: "娛樂", photo: "/alumni-bao-weiming.jpg" },
-    { name: "伍姮華", grade: "6屆之10班", achievement: "立法委員、內政部民政司副司長、體育署次長、教育部政務次長", field: "政治、教育", photo: null },
-    { name: "蘭宗熟", grade: "6屆之1班", achievement: "藝人、臺北市政府觀光傳播局局長", field: "藝術、政治", photo: null },
+    { name: "費鴻泰", grade: "12屆", achievement: "立法委員、臺北市議員", field: "政治", photo: "/alumni-fei-hongtai.jpg" },
+    { name: "周錫瑋", grade: "13屆", achievement: "前新北市長、前臺北縣長", field: "政治", photo: "/alumni-zhou-xiwei.jpg" },
+    { name: "包偉銘", grade: "6屆之10班", achievement: "財經節目主持人、歌手、音樂創作者", field: "娛樂", photo: "/alumni-bao-weiming.jpg" },
+    { name: "伍婉華", grade: "6屆之10班", achievement: "立法委員、體育署次長、教育部政務次長", field: "政治、教育", photo: null },
+    { name: "簡余晏", grade: "15屆", achievement: "台北市議員、觀傳局長、作家", field: "政治、文化", photo: "/alumni-jian-yuyan.jpg" },
     { name: "包小松", grade: "6屆之4班", achievement: "歌手、組團制作人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaosong.jpg" },
-    { name: "包小柏", grade: "6屆之4班", achievement: "歌手、藝人、網路紅人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaobai.jpg" },
-    { name: "關康詩", grade: "6屆之3班", achievement: "臺灣自行車選手、馬拉松跑者管理長", field: "體育", photo: null },
-    { name: "黃乃輝", grade: "6屆之13班", achievement: "立法委員、臺北市政府教育局副局長、行政院客家委員會委員", field: "政治、教育", photo: null },
-    { name: "胡皓賢", grade: "6屆之1班", achievement: "第6屆立委、世大運球團副代表", field: "政治、體育", photo: null },
+    { name: "包小柏", grade: "6屆之4班", achievement: "歌手、藝人、音樂制作人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaobai.jpg" },
+    { name: "饒慶鈴", grade: "18屆", achievement: "台東縣長", field: "政治", photo: null },
+    { name: "黃乃輝", grade: "6屆之13班", achievement: "立法委員、臺北市政府教育局副局長", field: "政治、教育", photo: null },
+    { name: "胡瓏貿", grade: "20屆", achievement: "企業家、社會公益人士", field: "商業", photo: null },
   ];
 
   // 生成第12屆到第69屆的資料
