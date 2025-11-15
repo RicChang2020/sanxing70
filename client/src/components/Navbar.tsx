@@ -1,11 +1,11 @@
-import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { APP_TITLE } from "@/const";
+import { useCustomRouter } from "@/hooks/useCustomRouter";
+import { BASE_URL } from "@/const";
 
 export default function Navbar() {
-  const [location] = useLocation();
+  const { currentPath, navigate } = useCustomRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -22,27 +22,24 @@ export default function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo and Title */}
-          <Link href="/">
-            <div className="flex items-center gap-3 cursor-pointer">
-              <img src="/logo.png" alt="三興國小70週年" className="w-14 h-14 object-contain transform hover:scale-110 hover:rotate-6 transition-transform duration-300" />
-              <div className="flex flex-col">
-                <span className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">{APP_TITLE}</span>
-                <span className="text-xs font-semibold text-secondary">Sanxing Elementary School 70th Anniversary</span>
-              </div>
-            </div>
-          </Link>
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <img src={`${BASE_URL}school-name-transparent.png`} alt="臺北市信義區三興國民學七十週年校慶羅网站" className="h-16 object-contain" />
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <Button
-                  variant={location === item.path ? "default" : "ghost"}
-                  className="font-bold rounded-full hover:scale-105 transition-transform"
-                >
-                  {item.label}
-                </Button>
-              </Link>
+              <Button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                variant={currentPath === item.path ? "default" : "ghost"}
+                className="font-bold rounded-full hover:scale-105 transition-transform"
+              >
+                {item.label}
+              </Button>
             ))}
           </div>
 
@@ -61,15 +58,17 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="lg:hidden pb-4 space-y-1">
             {navItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <Button
-                  variant={location === item.path ? "default" : "ghost"}
-                  className="w-full justify-start font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Button>
-              </Link>
+              <Button
+                key={item.path}
+                onClick={() => {
+                  navigate(item.path);
+                  setMobileMenuOpen(false);
+                }}
+                variant={currentPath === item.path ? "default" : "ghost"}
+                className="w-full justify-start font-medium"
+              >
+                {item.label}
+              </Button>
             ))}
           </div>
         )}

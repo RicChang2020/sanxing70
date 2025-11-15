@@ -1,7 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
@@ -13,26 +12,7 @@ import Media from "./pages/Media";
 import Contact from "./pages/Contact";
 import Homecoming from "./pages/Homecoming";
 import Sports from "./pages/Sports";
-
-function Router() {
-  return (
-    <Layout>
-      <Switch>
-        <Route path={"/"} component={Home} />
-        <Route path={"/history"} component={History} />
-        <Route path={"/events"} component={Events} />
-        <Route path={"/events/homecoming"} component={Homecoming} />
-        <Route path={"/events/sports"} component={Sports} />
-        <Route path={"/alumni"} component={Alumni} />
-        <Route path={"/media"} component={Media} />
-        <Route path={"/contact"} component={Contact} />
-        <Route path={"/404"} component={NotFound} />
-        {/* Final fallback route */}
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
-  );
-}
+import { useCustomRouter } from "./hooks/useCustomRouter";
 
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
@@ -40,6 +20,31 @@ function Router() {
 // - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
+  const { currentPath } = useCustomRouter();
+
+  // Simple path matching
+  const renderPage = () => {
+    if (currentPath === "/" || currentPath === "") {
+      return <Home />;
+    } else if (currentPath === "/history") {
+      return <History />;
+    } else if (currentPath === "/events") {
+      return <Events />;
+    } else if (currentPath === "/events/homecoming") {
+      return <Homecoming />;
+    } else if (currentPath === "/events/sports") {
+      return <Sports />;
+    } else if (currentPath === "/alumni") {
+      return <Alumni />;
+    } else if (currentPath === "/media") {
+      return <Media />;
+    } else if (currentPath === "/contact") {
+      return <Contact />;
+    } else {
+      return <NotFound />;
+    }
+  };
+
   return (
     <ErrorBoundary>
       <ThemeProvider
@@ -48,7 +53,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Layout>{renderPage()}</Layout>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

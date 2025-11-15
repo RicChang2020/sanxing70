@@ -2,14 +2,13 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Users, Trophy, Music, ChevronRight } from "lucide-react";
-import { Link } from "wouter";
+import { useCustomRouter } from "@/hooks/useCustomRouter";
 
 export default function Events() {
+  const { navigate } = useCustomRouter();
   const events = [
-    { title: "三代同興校友回娘家", date: "2025年12月15日", time: "09:00-17:00", location: "三興國小校園", icon: Users, color: "bg-secondary", link: "/events/homecoming" },
-    { title: "體育表演會", date: "2025年12月20日", time: "08:00-12:00", location: "三興國小操場", icon: Trophy, color: "bg-accent", link: "/events/sports" },
-    { title: "校慶音樂會", date: "2025年12月28日", time: "19:00-21:00", location: "三興國小禮堂", icon: Music, color: "bg-primary", link: "#" },
-    { title: "70週年慶祝大會", date: "2025年12月31日", time: "10:00-12:00", location: "三興國小禮堂", icon: Calendar, color: "bg-primary", link: "#" },
+    { title: "校友回娘家茶會", date: "2025年11月29日", time: "08:00-12:00", location: "三興國小活動中心", icon: Users, color: "bg-secondary", link: "/events/alumni-tea" },
+    { title: "體育表演會", date: "2025年11月29日", time: "08:00-12:00", location: "三興國小操場", icon: Trophy, color: "bg-accent", link: "/events/sports" },
   ];
 
   return (
@@ -20,7 +19,7 @@ export default function Events() {
             <Badge variant="secondary" className="text-lg px-6 py-2">
               <Calendar className="w-4 h-4 mr-2" />校慶活動
             </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">精彩<span className="text-primary">活動</span>等你參與</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" style={{letterSpacing: '0.15em'}}>精彩<span className="text-primary">活動</span>等你參與</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">70週年校慶系列活動，邀請您一同參與這個特別的時刻。</p>
           </div>
         </div>
@@ -46,9 +45,9 @@ export default function Events() {
                         </div>
                       </div>
                     </div>
-                    <Link href={event.link}>
+                    <div onClick={() => navigate(event.link)} className="cursor-pointer">
                       <Button>查看詳情<ChevronRight className="w-4 h-4 ml-1" /></Button>
-                    </Link>
+                    </div>
                   </div>
                 </CardHeader>
               </Card>

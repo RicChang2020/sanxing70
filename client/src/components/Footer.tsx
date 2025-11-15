@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { BASE_URL } from "@/const";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="三興國小70週年" className="w-16 h-16 object-contain" />
+              <img src={`${BASE_URL}logo.png`} alt="三興國小70週年" className="w-16 h-16 object-contain" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-foreground">三興國小</span>
                 <span className="text-sm text-muted-foreground">70週年校慶</span>
@@ -68,9 +69,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground text-center md:text-left">
-              © {currentYear} 三興國小70週年校慶籌備委員會 版權所有
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-sm text-muted-foreground">
+                © {currentYear} 三興國小70週年校慶籌備委員會 版權所有
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                三興國小70週年校慶
+              </p>
+            </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <a href="#" className="hover:text-primary transition-colors">隱私政策</a>
               <span>|</span>

@@ -1,72 +1,75 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, Award, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon } from "lucide-react";
-import { useState } from "react";
+import { Users, Award, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon, Facebook, MessageCircle } from "lucide-react";
+import { useState, useMemo, useCallback } from "react";
 
 export default function Alumni() {
-  const [expandedGrade, setExpandedGrade] = useState<number | null>(null);
+  const [selectedGrade, setSelectedGrade] = useState<number>(12);
+  const [selectedClass, setSelectedClass] = useState<number>(1);
 
   const alumni = [
+    { name: "饒慶鈴", grade: "18屆", achievement: "現任臺東縣縣長", field: "政治", photo: "/alumni-rao-qingling.jpg" },    { name: "胡疓貲", grade: "20屆", achievement: "2015年世大運男籃賽中華臺北代表隊選手、2018年亞運男籃賽中華臺北代表隊選手、2025年亞洲盃男籃賽中華臺北代表隊選手。現為TTPBL联盟全家高雄海神球員", field: "體育", photo: "/alumni-hu-longmao.jpg" },
     { name: "費鴻泰", grade: "12屆", achievement: "立法委員、臺北市議員", field: "政治", photo: "/alumni-fei-hongtai.jpg" },
     { name: "周錫瑋", grade: "13屆", achievement: "前新北市長、前臺北縣長", field: "政治", photo: "/alumni-zhou-xiwei.jpg" },
-    { name: "包偉銘", grade: "6屆之10班", achievement: "財經節目主持人、歌手、音樂創作者", field: "娛樂", photo: "/alumni-bao-weiming.jpg" },
-    { name: "伍婉華", grade: "6屆之10班", achievement: "氣象學家、交通部中央氣象署氣象預報中心簡任技正", field: "氣象科學", photo: null },
-    { name: "簡余晏", grade: "15屆", achievement: "台北市議員、觀傳局長、作家", field: "政治、文化", photo: "/alumni-jian-yuyan.jpg" },
+    { name: "簡余晏", grade: "15屆", achievement: "前台北市議員、前台北市觀傳局長", field: "政治、文化", photo: "/alumni-jian-yuyan.jpg" },
+    { name: "伍婉華", grade: "6屆之10班", achievement: "氣象學家、交通部中央氣象署氣象預報中心簡任技正", field: "氣象科學", photo: "/alumni-wu-wanhua.jpg" },
+    { name: "黃乃輝", grade: "6屆之13班", achievement: "生命鬥士，榮獲1997年十大傑出青年", field: "公益", photo: "/alumni-huang-naihui.jpg" },
     { name: "包小松", grade: "6屆之4班", achievement: "歌手、組團制作人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaosong.jpg" },
     { name: "包小柏", grade: "6屆之4班", achievement: "歌手、藝人、音樂制作人、音樂創作者", field: "娛樂", photo: "/alumni-bao-xiaobai.jpg" },
-    { name: "饒慶鈴", grade: "18屆", achievement: "台東縣長", field: "政治", photo: null },
-    { name: "黃乃輝", grade: "6屆之13班", achievement: "立法委員、臺北市政府教育局副局長", field: "政治、教育", photo: null },
-    { name: "胡瓏貿", grade: "20屆", achievement: "松山高中籃球隊，帶領球隊達成HBL三連霸", field: "體育", photo: null },
+    { name: "包偉銘", grade: "6屆之10班", achievement: "財經節目主持人、歌手、音樂創作者", field: "娛樂", photo: "/alumni-bao-weiming.jpg" },
   ];
 
-  // 生成第12屆到第69屆的資料
-  // 第69屆 = 2026年，第68屆 = 2025年，第67屆 = 2024年
-  const generateGraduationYears = () => {
-    const grades = [];
-    for (let grade = 12; grade <= 69; grade++) {
-      // 根據第70屆=2027年計算，graduationYear = 2027 - (70 - grade) = 1957 + grade
-      const graduationYear = 1957 + grade;
-      
-      // 第17屆有實際照片，14個班
-      if (grade === 17) {
-        const classes = [];
-        for (let classNum = 1; classNum <= 14; classNum++) {
-          classes.push({
-            className: `${classNum}班`,
-            photoUrl: `/alumni/grade17/class-${classNum}.jpg`,
-          });
-        }
-        grades.push({
-          grade,
-          year: graduationYear,
-          classes,
-        });
-      } else {
-        const classCount = Math.floor(Math.random() * 6) + 5; // 5-10個班
-        const classes = [];
-        for (let classNum = 1; classNum <= classCount; classNum++) {
-          classes.push({
-            className: `${classNum}班`,
-            // 預留照片上傳位置，目前使用佔位圖
-            photoUrl: null,
-          });
-        }
-        grades.push({
-          grade,
-          year: graduationYear,
-          classes,
-        });
-      }
+  // 各屆班級數配置
+  const gradeClassCount: {[key: number]: number} = {
+    12: 14, 13: 6, 14: 13, 15: 8, 17: 5, 18: 7, 19: 9, 20: 6, 21: 10, 22: 8,
+    23: 7, 24: 9, 25: 9, 26: 10, 27: 10, 28: 10, 29: 10, 30: 9, 31: 9, 32: 8,
+    33: 5, 34: 7, 35: 8, 36: 8, 37: 9, 38: 5, 39: 5, 40: 10, 41: 7, 42: 8,
+    43: 10, 44: 6, 45: 8, 46: 9, 47: 6, 48: 10, 49: 7, 50: 5, 51: 8, 52: 6,
+    53: 10, 54: 7, 55: 9, 56: 8, 57: 5, 58: 5, 59: 9, 60: 8, 61: 7, 62: 7,
+    63: 10, 64: 8, 65: 6, 66: 8, 67: 7, 68: 8, 69: 7,
+  };
+
+  // 校園媒體庫主資料夾ID
+  const MEDIA_LIBRARY_ID = "1V_3MhVOx0AY0mdVF1DPT4hyDN9HXlxz4";
+
+  // 生成Google Drive資料夾連結
+  const generateGoogleDriveLink = (grade: number, classNum: number) => {
+    // 格式：https://drive.google.com/drive/folders/{folderId}
+    // 這裡使用簡化的連結結構，實際需要根據Google Drive的實際資料夾ID
+    return `https://drive.google.com/drive/folders/${MEDIA_LIBRARY_ID}`;
+  };
+
+  // 獲取該屆的班級數
+  const classCount = useMemo(() => {
+    return gradeClassCount[selectedGrade] || 5;
+  }, [selectedGrade]);
+
+  // 獲取該班的照片（暫時使用佔位圖）
+  const getClassPhoto = (grade: number, classNum: number) => {
+    if (grade === 12) {
+      // 第12屆有實際照片
+      return `/alumni/class-18/18-${600 + classNum}.jpg`;
     }
-    return grades.reverse(); // 最新的在前面
+    if (grade === 14) {
+      // 第14屆有實際照片
+      return `/alumni/grade14/class-${classNum}.jpg`;
+    }
+    return null;
   };
 
-  const graduationData = generateGraduationYears();
+  const classPhoto = getClassPhoto(selectedGrade, selectedClass);
 
-  const toggleGrade = (grade: number) => {
-    setExpandedGrade(expandedGrade === grade ? null : grade);
-  };
+  const handleGradeChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newGrade = parseInt(e.target.value, 10);
+    setSelectedGrade(newGrade);
+    setSelectedClass(1);
+  }, []);
+
+  const handleClassChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newClass = parseInt(e.target.value, 10);
+    setSelectedClass(newClass);
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -76,20 +79,15 @@ export default function Alumni() {
             <Badge variant="secondary" className="text-lg px-6 py-2">
               <Users className="w-4 h-4 mr-2" />校友專區
             </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">傑出<span className="text-secondary">校友</span></h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">三興國小培育了無數優秀人才，他們在各領域發光發熱。</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">三興<span className="text-secondary">風雲榜</span></h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">他們在政治、教育、娛樂、體育等各領域繼續發光發熱，為母校爭光。</p>
           </div>
         </div>
       </section>
 
       <section className="py-16 bg-gradient-to-b from-white to-accent/5">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
-            🌟 傑出校友介紹
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            他們在政治、教育、娛樂、體育等各領域繼續發光發熱，為母校爭光。
-          </p>
+
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {alumni.map((person, index) => (
               <Card key={index} className="hover:shadow-2xl transition-all hover:-translate-y-2 border-4 border-transparent hover:border-primary rounded-3xl overflow-hidden">
@@ -118,6 +116,33 @@ export default function Alumni() {
                         {person.field}
                       </Badge>
                     </CardDescription>
+                    <div className="flex justify-center gap-2 pt-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-50"
+                        onClick={() => {
+                          const shareUrl = window.location.href;
+                          const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=三興國小傑出校友：${person.name}`;
+                          window.open(facebookUrl, '_blank', 'width=600,height=400');
+                        }}
+                      >
+                        <Facebook className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full border-2 border-green-500 text-green-500 hover:bg-green-50"
+                        onClick={() => {
+                          const shareUrl = window.location.href;
+                          const message = `三興國小傑出校友：${person.name} - ${person.achievement}`;
+                          const lineUrl = `https://line.me/R/msg/0?${encodeURIComponent(message)}`;
+                          window.open(lineUrl, '_blank');
+                        }}
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </div>
                 </CardHeader>
               </Card>
@@ -131,64 +156,63 @@ export default function Alumni() {
           <div className="max-w-6xl mx-auto space-y-8">
             <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold">畢業紀念冊</h2>
-              <p className="text-lg text-muted-foreground">查看歷屆畢業紀念冊，重溫美好回憶（第12屆～第89屆）</p>
+              <p className="text-lg text-muted-foreground">查看歷屆畢業紀念冊，重溫美好回憶</p>
             </div>
 
-            <div className="space-y-4">
-              {graduationData.map((gradeData) => (
-                <Card key={gradeData.grade} className="overflow-hidden">
-                  <CardHeader 
-                    className="cursor-pointer hover:bg-secondary/5 transition-colors"
-                    onClick={() => toggleGrade(gradeData.grade)}
+            {/* 下拉式選單區域 */}
+            <Card className="bg-white">
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Grade 下拉選單 */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-foreground">選擇屆別</label>
+                    <select
+                      value={String(selectedGrade)}
+                      onChange={handleGradeChange}
+                      className="w-full px-4 py-2 border-2 border-secondary rounded-lg focus:outline-none focus:border-primary"
+                    >
+                      {Array.from({ length: 58 }, (_, i) => 12 + i).map((grade) => (
+                        <option key={`grade-${grade}`} value={String(grade)}>
+                          第{grade}屆 ({1957 + grade}年)
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Class 下拉選單 */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-foreground">選擇班級</label>
+                    <select
+                      value={String(selectedClass)}
+                      onChange={handleClassChange}
+                      className="w-full px-4 py-2 border-2 border-secondary rounded-lg focus:outline-none focus:border-primary"
+                    >
+                      {Array.from({ length: classCount }, (_, i) => i + 1).map((classNum) => (
+                        <option key={`class-${classNum}`} value={String(classNum)}>
+                          {classNum}班
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* 畢業紀念冊雲端連結 */}
+                <div className="mt-6">
+                  <a
+                    href="https://reurl.cc/AbnmGd"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <Badge variant="secondary" className="text-lg px-4 py-2">
-                          第{gradeData.grade}屆
-                        </Badge>
-                        <div>
-                          <CardTitle className="text-xl">畢業年份：{gradeData.year}年</CardTitle>
-                          <CardDescription className="mt-1">共{gradeData.classes.length}個班級</CardDescription>
-                        </div>
-                      </div>
-                      {expandedGrade === gradeData.grade ? (
-                        <ChevronUp className="w-6 h-6 text-muted-foreground" />
-                      ) : (
-                        <ChevronDown className="w-6 h-6 text-muted-foreground" />
-                      )}
-                    </div>
-                  </CardHeader>
-                  
-                  {expandedGrade === gradeData.grade && (
-                    <CardContent className="pt-0 pb-6">
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
-                        {gradeData.classes.map((classData, index) => (
-                          <Card key={index} className="hover:shadow-md transition-shadow">
-                            <CardContent className="p-4 space-y-3">
-                              <div className="aspect-[4/3] bg-muted rounded-md flex items-center justify-center overflow-hidden">
-                                {classData.photoUrl ? (
-                                  <img 
-                                    src={classData.photoUrl} 
-                                    alt={`第${gradeData.grade}屆${classData.className}合照`}
-                                    className="w-full h-full object-cover"
-                                  />
-                                ) : (
-                                  <div className="text-center space-y-2">
-                                    <ImageIcon className="w-8 h-8 text-muted-foreground mx-auto" />
-                                    <p className="text-xs text-muted-foreground">待上傳照片</p>
-                                  </div>
-                                )}
-                              </div>
-                              <p className="text-center font-semibold">{classData.className}</p>
-                            </CardContent>
-                          </Card>
-                        ))}
-                      </div>
-                    </CardContent>
-                  )}
-                </Card>
-              ))}
-            </div>
+                    <Button className="w-full bg-gradient-to-r from-secondary to-primary hover:shadow-lg">
+                      畢業紀念冊雲端連結
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Button>
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+
+
 
             <div className="text-center pt-8">
               <p className="text-sm text-muted-foreground mb-4">

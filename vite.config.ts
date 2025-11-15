@@ -9,6 +9,7 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/sanxing70/' : '/',
   plugins,
   resolve: {
     alias: {
@@ -22,6 +23,9 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+  },
+  preview: {
+    middlewareMode: true,
   },
   server: {
     port: 3000,

@@ -28,28 +28,28 @@ export default function Homecoming() {
                     <Calendar className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold mb-1">活動日期</p>
-                      <p className="text-muted-foreground">2025年12月15日（星期日）</p>
+                      <p className="text-muted-foreground">2025年11月29日（星期五）</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Clock className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold mb-1">活動時間</p>
-                      <p className="text-muted-foreground">09:00 - 17:00</p>
+                      <p className="text-muted-foreground">08:00 - 12:00</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <MapPin className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold mb-1">活動地點</p>
-                      <p className="text-muted-foreground">三興國小校園</p>
+                      <p className="text-muted-foreground">一樓圖書室</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Users className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold mb-1">參加對象</p>
-                      <p className="text-muted-foreground">歷屆校友及家屬</p>
+                      <p className="text-muted-foreground">三代同興的校友及家屬們</p>
                     </div>
                   </div>
                 </div>

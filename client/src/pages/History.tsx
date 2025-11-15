@@ -23,7 +23,7 @@ export default function History() {
     { 
       year: "民國44年", 
       date: "1955年8月",
-      title: "獨立設校", 
+      title: "獨立設校 第一任校長", 
       description: "奉令獨立，派席慧珍校長為首任校長，並策劃歸併校地，興建校舍，始具雛形。本校因座落三張犁，並為紀念原校興雅而命名三興國民學校。", 
       icon: Sparkles, 
       color: "bg-yellow-400" 
@@ -159,24 +159,16 @@ export default function History() {
     { 
       year: "民國105年", 
       date: "2016年8月",
-      title: "第十五任校長", 
-      description: "經校長遴選，梁靜珊校長為第十五任校長。", 
+      title: "第十四任校長", 
+      description: "經校長遴選，梁靜珊校長為第十四任校長。", 
       icon: Users, 
       color: "bg-green-400" 
     },
     { 
-      year: "民國107年", 
-      date: "2018年8月",
-      title: "第十六任代理校長", 
-      description: "市府派林淑菁校長為第十六任代理校長。", 
-      icon: Users, 
-      color: "bg-pink-400" 
-    },
-    { 
       year: "民國108年", 
       date: "2019年8月",
-      title: "第十七任校長", 
-      description: "經校長遴選，李莉莉校長為第十七任校長，112年8月經校長遴選連任。", 
+      title: "第十五任校長", 
+      description: "經校長遴選，李莉莉校長為第十五任校長，112年8月經校長遴選連任。", 
       icon: Users, 
       color: "bg-sky-400" 
     },
