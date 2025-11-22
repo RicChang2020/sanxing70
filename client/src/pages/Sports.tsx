@@ -41,7 +41,7 @@ export default function Sports() {
                     <MapPin className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold mb-1">活動地點</p>
-                      <p className="text-muted-foreground">三興國小操場（春春水市信義區三興路一段）</p>
+                      <p className="text-muted-foreground">三興國小操場（台北市信義區基隆路2段99號）</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
