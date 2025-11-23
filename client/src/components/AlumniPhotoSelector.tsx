@@ -15,15 +15,20 @@ export default function AlumniPhotoSelector({ className }: AlumniPhotoSelectorPr
   // Get available grades from alumniPhotos
   const availableGrades = Object.keys(alumniPhotos).sort((a, b) => parseInt(a) - parseInt(b));
 
+  // Helper function to safely get photo URL
+  const getPhotoUrl = (grade: string, classNum: string): string | null => {
+    const gradeData = alumniPhotos[grade as keyof typeof alumniPhotos];
+    if (!gradeData) return null;
+    return (gradeData[classNum as keyof typeof gradeData] as string) || null;
+  };
+
   // Get available classes for selected grade
   const availableClasses = selectedGrade && alumniPhotos[selectedGrade as keyof typeof alumniPhotos]
     ? Object.keys(alumniPhotos[selectedGrade as keyof typeof alumniPhotos]).sort((a, b) => parseInt(a) - parseInt(b))
     : [];
 
   // Get photo URL for selected grade and class
-  const photoUrl: string | null = selectedGrade && selectedClass
-    ? (alumniPhotos[selectedGrade as keyof typeof alumniPhotos]?.[selectedClass as keyof typeof alumniPhotos[keyof typeof alumniPhotos]] as string | undefined) || null
-    : null;
+  const photoUrl = selectedGrade && selectedClass ? getPhotoUrl(selectedGrade, selectedClass) : null;
 
   const handleGradeChange = (grade: string) => {
     setSelectedGrade(grade);
@@ -97,6 +102,7 @@ export default function AlumniPhotoSelector({ className }: AlumniPhotoSelectorPr
                 src={photoUrl.replace('/view?', '/preview?')}
                 className="w-full h-full"
                 allow="autoplay"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                 title={`第${selectedGrade}屆-${selectedClass}班`}
               />
             </div>
