@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BookOpen, ExternalLink, ChevronDown } from "lucide-react";
 import FilterForm from "@/components/FilterForm";
+import AlumniPhotoSelector from "@/components/AlumniPhotoSelector";
 
 interface Photo {
   id: string;
@@ -115,6 +116,11 @@ export default function Alumni() {
             classInfo={classInfo}
             onFilter={handleFilter}
           />
+        </div>
+
+        {/* 校友照片選擇器 */}
+        <div className="mb-8">
+          <AlumniPhotoSelector />
         </div>
 
         {/* 屆別快速選擇 */}
