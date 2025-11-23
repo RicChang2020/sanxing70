@@ -8,7 +8,7 @@ export default function Events() {
   const { navigate } = useCustomRouter();
   const events = [
     { title: "校友回娘家茶會", date: "2025年11月29日", time: "08:00-12:00", location: "三興國小活動中心", icon: Users, color: "bg-secondary", link: "/events/alumni-tea" },
-    { title: "體育表演會", date: "2025年11月29日", time: "08:00-12:00", location: "三興國小操場", icon: Trophy, color: "bg-accent", link: "/events/sports" },
+    { title: "體育表演會", date: "2025年11月29日", time: "08:00-12:00", location: "三興國小操場（台北市信義區基隆路二段99號）", icon: Trophy, color: "bg-accent", link: "/events/sports" },
   ];
 
   return (
@@ -33,7 +33,7 @@ export default function Events() {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4 flex-1">
-                      <div className={`w-16 h-16 rounded-full ${event.color} flex items-center justify-center flex-shrink-0`}>
+                      <div className={`w-16 h-16 rounded-full ${event.color} flex items-center justify-center flex-shrink-0`}> 
                         <event.icon className="w-8 h-8 text-white" />
                       </div>
                       <div className="space-y-2 flex-1">
