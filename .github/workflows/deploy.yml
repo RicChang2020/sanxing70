@@ -38,6 +38,7 @@ jobs:
 
       - name: Build
         env:
+          NODE_ENV: 'production'
           GITHUB_PAGES: 'true'
         run: pnpm run build
 
