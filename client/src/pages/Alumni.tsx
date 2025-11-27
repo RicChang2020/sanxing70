@@ -1,49 +1,57 @@
-	
-12	{ grade: 12, name: "第12屆", photos: (13)[…] }
-14	{ grade: 14, name: "第14屆", photos: (13)[…] }
-17	{ grade: 17, name: "第17屆", photos: (14)[…] }
-18	{ grade: 18, name: "第18屆", photos: (14)[…] }
-19	{ grade: 19, name: "第19屆", photos: (14)[…] }
-21	{ grade: 21, name: "第21屆", photos: (28)[…] }
-22	{ grade: 22, name: "第22屆", photos: (31)[…] }
-23	{ grade: 23, name: "第23屆", photos: (30)[…] }
-24	{ grade: 24, name: "第24屆", photos: (30)[…] }
-25	{ grade: 25, name: "第25屆", photos: (30)[…] }
-26	{ grade: 26, name: "第26屆", photos: (14)[…] }
-27	{ grade: 27, name: "第27屆", photos: (979)[…] }
-28	{ grade: 28, name: "第28屆", photos: (28)[…] }
-29	{ grade: 29, name: "第29屆", photos: (14)[…] }
-30	{ grade: 30, name: "第30屆", photos: (2)[…] }
-31	{ grade: 31, name: "第31屆", photos: (2)[…] }
-32	{ grade: 32, name: "第32屆", photos: (2)[…] }
-33	{ grade: 33, name: "第33屆", photos: (30)[…] }
-36	{ grade: 36, name: "第36屆", photos: (12)[…] }
-37	{ grade: 37, name: "第37屆", photos: (13)[…] }
-39	{ grade: 39, name: "第39屆", photos: (12)[…] }
-40	{ grade: 40, name: "第40屆", photos: (12)[…] }
-41	{ grade: 41, name: "第41屆", photos: (12)[…] }
-44	{ grade: 44, name: "第44屆", photos: (12)[…] }
-45	{ grade: 45, name: "第45屆", photos: (11)[…] }
-46	{ grade: 46, name: "第46屆", photos: (1)[…] }
-47	{ grade: 47, name: "第47屆", photos: (22)[…] }
-48	{ grade: 48, name: "第48屆", photos: (24)[…] }
-49	{ grade: 49, name: "第49屆", photos: (22)[…] }
-50	{ grade: 50, name: "第50屆", photos: (44)[…] }
-51	{ grade: 51, name: "第51屆", photos: (29)[…] }
-52	{ grade: 52, name: "第52屆", photos: (31)[…] }
-53	{ grade: 53, name: "第53屆", photos: (1)[…] }
-54	{ grade: 54, name: "第54屆", photos: (9)[…] }
-55	{ grade: 55, name: "第55屆", photos: (19)[…] }
-56	{ grade: 56, name: "第56屆", photos: (21)[…] }
-57	{ grade: 57, name: "第57屆", photos: (7)[…] }
-58	{ grade: 58, name: "第58屆", photos: (17)[…] }
-59	{ grade: 59, name: "第59屆", photos: (5)[…] }
-60	{ grade: 60, name: "第60屆", photos: (11)[…] }
-61	{ grade: 61, name: "第61屆", photos: (1)[…] }
-62	{ grade: 62, name: "第62屆", photos: (5)[…] }
-63	{ grade: 63, name: "第63屆", photos: (1)[…] }
-64	{ grade: 64, name: "第64屆", photos: (6)[…] }
-65	{ grade: 65, name: "第65屆", photos: (1)[…] }
-66	{ grade: 66, name: "第66屆", photos: (1)[…] }
-67	{ grade: 67, name: "第67屆", photos: (1)[…] }
-68	{ grade: 68, name: "第68屆", photos: (1)[…] }
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Users, ExternalLink } from "lucide-react";
+import { alumniFolders } from "@/data/alumniFolders";
+
+export default function Alumni() {
+  return (
+    <div className="min-h-screen">
+      <section className="bg-gradient-to-br from-secondary/10 via-secondary/5 to-background py-16 md:py-24">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <Badge variant="secondary" className="text-lg px-6 py-2">
+              <Users className="w-4 h-4 mr-2" />校友專區
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              傑出<span className="text-secondary">校友</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              歡迎各屆校友回顧母校點滴
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="py-16">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            歷屆校友相簿
+          </h2>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {alumniFolders.map((folder) => (
+              <a
+                key={folder.id}
+                href={folder.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+                  <div className="aspect-video bg-gradient-to-br from-secondary/20 to-secondary/10 flex items-center justify-center">
+                    <Users className="w-16 h-16 text-secondary" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="flex items-center justify-between">
+                      {folder.label}
+                      <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-secondary transition-colors" />
+                    </CardTitle>
+                    <CardDescription>點擊開啟 Google Drive 相簿</CardDescription>
+                  </CardHeader>
+                </Card>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
