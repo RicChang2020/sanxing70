@@ -33,18 +33,21 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install dependencies (root)
         run: pnpm install --frozen-lockfile
 
-      - name: Build
+      - name: Build (client)
         env:
           GITHUB_PAGES: 'true'
-        run: pnpm run build
+        run: |
+          cd client
+          pnpm install --frozen-lockfile
+          pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/public'
+          path: './client/dist'
 
   deploy:
     environment:
