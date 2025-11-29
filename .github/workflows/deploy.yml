@@ -39,12 +39,12 @@ jobs:
       - name: Build
         env:
           GITHUB_PAGES: 'true'
-        run: pnpm run build
+        run: cd client && pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/public'
+          path: './client/dist'
 
   deploy:
     environment:
